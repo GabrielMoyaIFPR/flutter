@@ -1,31 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:primeiro_pro/app/database/script.dart';
-import 'package:path/path.dart';
+import 'package:primeiro_pro/app/database/sqlite/connection.dart';
 import 'package:primeiro_pro/app/my_app.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ContactList extends StatelessWidget {
-  final lista = [
-    {'nome':'Pietro', "telefone":'(44) 999597866', 'avatar': 'https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_1280.png'},
 
-  ];
 
 Future<List<Map< String,dynamic>>> _buscar()async {
-  String path = join(await getDatabasesPath(),'banco');
-  Database db = await openDatabase(
-  path,
-    version: 1,
-    onCreate : (db, v){
-      db.execute(createTable);
-      db.execute(insert1);
-    }
-    
-  );
+  Database db = await Connection.get();
   return db.query('contact');
   }
 
   @override
   Widget build(BuildContext context) {
+
     return FutureBuilder(
       future: _buscar(),
       builder: (context, futuro){
