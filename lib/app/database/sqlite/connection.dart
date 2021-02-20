@@ -1,5 +1,5 @@
 import 'package:path/path.dart';
-import 'package:primeiro_pro/app/database/script.dart';
+import 'package:primeiro_pro/app/database/sqlite/script.dart';
 import 'package:sqflite/sqlite_api.dart';
 import 'package:sqflite/sqflite.dart';
 
