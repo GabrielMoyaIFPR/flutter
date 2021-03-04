@@ -16,9 +16,9 @@ class ContactService{
 
   }
 
-  remove(Contact contact){
+  remove(int id){
 
-    _dao.save(contact);
+    _dao.remove(id);
 
   }
 
