@@ -29,7 +29,6 @@ abstract class _ContactListBack with Store{
     Navigator.of(context).pushNamed(MyApp.CONTACT_FORM, arguments: contact).then(refreshList());
   }
 
-
   //excluir
   remove(int id){
     _service.remove(id);
