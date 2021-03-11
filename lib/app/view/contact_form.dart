@@ -4,9 +4,13 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'contact_form_back.dart';
 
 class ContactForm extends StatelessWidget {
+  
+  final _form = GlobalKey<FormState>();
 
   Widget fieldName(ContactFormBack back){
     return TextFormField(
+      validator: back.validateName,
+      onSaved: (newValue)=>back.contact.nome = newValue,
       initialValue: back.contact.nome,
       decoration: InputDecoration(
         labelText: 'Nome:'
@@ -15,6 +19,8 @@ class ContactForm extends StatelessWidget {
   }
   Widget fieldEmail(ContactFormBack back){
     return TextFormField(
+      validator: back.validateEmail,
+      onSaved: (newValue) => back.contact.email = newValue,
       initialValue: back.contact.email,
       decoration: InputDecoration(
         labelText: 'E-mail:'
@@ -25,6 +31,8 @@ class ContactForm extends StatelessWidget {
   Widget fieldTelefone(ContactFormBack back){
     var mask = MaskTextInputFormatter(mask:'(##)# ####-####');
     return TextFormField(
+      validator: back.validatePhone,
+      onSaved: (newValue) => back.contact.telefone = newValue,
       initialValue: back.contact.telefone,
       inputFormatters: [mask],
       keyboardType: TextInputType.number,
@@ -49,12 +57,23 @@ class ContactForm extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Cadastro de contato'),
       actions:[
-        IconButton(icon: Icon(Icons.save), onPressed: null)
+        IconButton(icon: Icon(Icons.save), 
+        onPressed: (){
+          _form.currentState.validate();
+          _form.currentState.save();
+          if(_back.isValid){
+            _back.save();
+            Navigator.of(context).pop();
+          }
+        }
+
+        )
       ],
       ),
       body: Padding(
         padding: EdgeInsets.all(10),
         child: Form(
+          key: _form,
           child: Column(
             children: [
               fieldName(_back),

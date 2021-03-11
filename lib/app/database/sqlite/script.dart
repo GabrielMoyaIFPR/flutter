@@ -6,7 +6,7 @@ final createTable ='''
    ,nome VARCHAR(200) NOT NULL
    ,telefone CHAR(16) NOT NULL
    ,email VARCHAR(150) NOT NULL
-   ,url_avatar VARCHAR(300) NOT NULL
+   ,url_avatar VARCHAR(300)
  )
 ''';
 

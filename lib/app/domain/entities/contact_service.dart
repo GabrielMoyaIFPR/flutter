@@ -33,25 +33,27 @@ class ContactService{
       throw new DomainLayerException('O nome é obrigatório');
     }else if(name.length< min){
       throw new DomainLayerException('O nome deve possuir pelo menos $min carácteres');
-    }else if(name.length< max){
+    }else if(name.length > max){
       throw new DomainLayerException('O nome deve possuir no máximo $max carácteres');
     }
   }
-}
+
 
 validateEmail(String email){
-  if(email = null){
+  if(email == null){
     throw new DomainLayerException('O e-mail é obrigatório');
-  }else if(email.contains('@')){
+  }else if(!email.contains('@')){
     throw new DomainLayerException('O e-mail deve possuir @');
   }
 }
 
 validatePhone(String phone){
-  var format = RegExp(r'^\([1-9]{2}\[9] [6-9] {1} {0-9} {3}\-[0=9]{4}$');
+  var format = RegExp(r'^\([1-9]{2}\)[9] [6-9]{1}[0-9]{3}\-[0-9]{4}$');
   if(phone == null){
     throw new DomainLayerException('O telefone é obrigatório');
-  }else if(format.hasMatch(phone)){
+  }else if(!format.hasMatch(phone)){
     throw new DomainLayerException('Formato do telefone inválido. O formato deve ser (99)99999-9999');
   }
+}
+
 }
