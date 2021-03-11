@@ -13,6 +13,7 @@ abstract class _ContactListBack with Store{
   var _service = GetIt.I.get<ContactService>();
   
   //lista de contatos
+  @observable
   Future<List<Contact>>list;
 
   //metodo para atualizar a lista de contatos

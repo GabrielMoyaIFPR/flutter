@@ -1,6 +1,5 @@
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:primeiro_pro/app/domain/entities/contact.dart';
-import 'package:primeiro_pro/app/my_app.dart';
 import 'package:primeiro_pro/app/view/contact_list_back.dart';
 import 'package:flutter/material.dart';
 

@@ -15,9 +15,11 @@ abstract class _ContactFormBack with Store{
   bool _emailIsValid;
   bool _telefoneIsValid;
 
-  @action
+  
   bool get isValid=> _nameIsValid && _emailIsValid && _telefoneIsValid;
+
   //diferenciar novo com alteração
+  @action
   _ContactFormBack(BuildContext context){
     var parameter = ModalRoute.of(context).settings.arguments;
     contact=(parameter==null)? Contact(): parameter;
