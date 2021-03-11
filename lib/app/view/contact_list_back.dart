@@ -26,7 +26,7 @@ abstract class _ContactListBack with Store{
 
   //metodo para chamar o form salvar/alterar
   goToForm(BuildContext context, [Contact contact]){
-    Navigator.of(context).pushNamed(MyApp.CONTACT_FORM, arguments: contact).then(refreshList());
+    Navigator.of(context).pushNamed(MyApp.CONTACT_FORM, arguments: contact).then(refreshList);
   }
 
   //excluir

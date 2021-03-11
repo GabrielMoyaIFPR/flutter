@@ -52,7 +52,7 @@ Widget iconRemoveButton(BuildContext context, Function remove){
                     IconButton(
                       icon: Icon(Icons.add),
                       onPressed: () {
-                        Navigator.of(context).pushNamed(MyApp.CONTACT_FORM);
+                         _back.goToForm(context);
                       },
                     ),
                   ],

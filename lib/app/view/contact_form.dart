@@ -44,6 +44,7 @@ class ContactForm extends StatelessWidget {
   }
   Widget fieldURLImage(ContactFormBack back){
     return TextFormField(
+      onSaved: (newValue) => back.contact.urlAvatar = newValue,
       initialValue: back.contact.urlAvatar,
       decoration: InputDecoration(
         labelText: 'Endereço Foto:'
